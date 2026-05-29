@@ -464,105 +464,60 @@ ul { list-style: none; }
 /* ==================== EQUIPAMENTOS ==================== */
 .section-equipamentos { background: var(--gray-100); }
 
-.eq-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.eq-card {
-  background: var(--white);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--gray-200);
-  overflow: hidden;
+.eq-list {
   display: flex;
   flex-direction: column;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--gray-200);
+}
+
+.eq-item {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.2rem 1.8rem;
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-200);
   transition: all var(--transition);
-  position: relative;
+  text-decoration: none;
 }
-.eq-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 4px;
-  background: var(--yellow);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
-}
-.eq-card:hover { 
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-card-hover);
-  border-color: transparent;
-}
-.eq-card:hover::before { transform: scaleX(1); }
-
-.eq-card-icon {
+.eq-item:last-child { border-bottom: none; }
+.eq-item:hover {
   background: var(--green-deep);
-  padding: 1.5rem 1.5rem 1rem;
-  font-size: 36px;
-  color: var(--yellow);
-  line-height: 1;
+  padding-left: 2.2rem;
 }
 
-.eq-card-body {
-  padding: 1.2rem 1.5rem;
-  flex: 1;
+.eq-item-icon {
+  font-size: 24px;
+  color: var(--yellow);
+  flex-shrink: 0;
+  width: 28px;
+  text-align: center;
 }
-.eq-card-body h3 {
+
+.eq-item-name {
+  flex: 1;
   font-family: var(--font-display);
   font-size: 22px;
   font-weight: 800;
   text-transform: uppercase;
-  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
   color: var(--charcoal);
+  transition: color var(--transition);
 }
-.eq-card-body p {
-  color: var(--gray-600);
-  font-size: 14px;
-  margin-bottom: 1rem;
-}
+.eq-item:hover .eq-item-name { color: var(--yellow); }
 
-.eq-features {
-  border-top: 1px solid var(--gray-200);
-  padding-top: 0.8rem;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+.eq-item-arrow {
+  font-size: 20px;
+  color: var(--gray-300);
+  transition: all var(--transition);
+  flex-shrink: 0;
 }
-.eq-features li {
-  font-size: 13px;
-  color: var(--gray-600);
-  padding-left: 14px;
-  position: relative;
-}
-.eq-features li::before {
-  content: '›';
-  position: absolute;
-  left: 0;
+.eq-item:hover .eq-item-arrow {
   color: var(--yellow);
-  font-weight: 700;
+  transform: translateX(4px);
 }
-
-.eq-cta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 1.5rem;
-  background: var(--green-deep);
-  color: var(--yellow);
-  font-family: var(--font-display);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  transition: background var(--transition);
-}
-.eq-cta:hover { background: var(--green-mid); }
-.eq-cta i { font-size: 16px; }
-
-.eq-card-more { border-style: dashed; border-color: var(--gray-300); }
-.eq-card-more .eq-card-icon { background: var(--gray-800); }
 
 /* ==================== COMO FUNCIONA ==================== */
 .section-como-funciona { background: var(--white); }
@@ -720,6 +675,23 @@ ul { list-style: none; }
   border-color: var(--green-deep);
 }
 .area-city i { font-size: 16px; color: var(--yellow); }
+.area-freight {
+  margin-left: auto;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--gray-400);
+  background: var(--gray-200);
+  border-radius: 4px;
+  padding: 2px 5px;
+  white-space: nowrap;
+  align-self: center;
+}
+.area-city:hover .area-freight {
+  color: var(--yellow);
+  background: rgba(255,255,255,0.12);
+}
 .area-city-consult {
   background: transparent;
   border-style: dashed;
@@ -993,7 +965,6 @@ ul { list-style: none; }
   .hero-visual .hero-stat-card:last-of-type { display: none; }
   .hero-grid-deco { display: none; }
 
-  .eq-grid { grid-template-columns: repeat(2, 1fr); }
   .dif-layout { grid-template-columns: 1fr; gap: 3rem; }
   .footer-inner { grid-template-columns: 1fr 1fr; }
   .footer-brand { grid-column: 1 / -1; }
@@ -1013,7 +984,6 @@ ul { list-style: none; }
   .hero-visual { display: none; }
   .hero-trust { gap: 1rem; }
 
-  .eq-grid { grid-template-columns: 1fr; }
   .steps-row { flex-direction: column; }
   .step-arrow { display: none; }
   .dif-right { grid-template-columns: 1fr; }
